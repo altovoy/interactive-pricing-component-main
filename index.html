@@ -26,9 +26,9 @@
       <form action="">
         <div class="card-content superior">
 
-          <h4 class="pages">100k pageviews</h4>
-          <h1 class="price"> <span class="big-accent">$16.00</span> <span class="period"> / month</span> </h1>
-          <input class="range-slider" type="range" min="5" max="10" step="0.01">
+          <h4 class="pages" id="page-views">100k pageviews</h4>
+          <h1 class="price"> <span class="big-accent">$<span id="price">16.00</span></span> <span class="period"> / month</span> </h1>
+          <input class="range-slider" type="range" min="0" max="4" step="1"  oninput="onSliderChange(this.value)">
           
           <div class="plan">
             <div></div>
@@ -68,5 +68,15 @@
     </div>
   </div>
 </body>
+
+<script>
+  const pricing = [{quantity:"10K", price: 8},{quantity:"50K", price:12},
+                  {quantity:"100K", price: 16},{quantity:"500K", price: 24},
+                  {quantity:"1M", price: 36}]
+  function onSliderChange(index){
+    document.getElementById("page-views").innerHTML = pricing[index].quantity + " pageviews";
+    document.getElementById("price").innerHTML = pricing[index].price.toFixed(2);
+  }
+</script>
 
 </html>
